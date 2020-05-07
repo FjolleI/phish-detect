@@ -1,0 +1,34 @@
+from flask import Flask,render_template,request
+from Classifier import score
+import Classifier
+import FeatureExtraction
+import pickle
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template("home.html")
+
+@app.route('/about')
+def about():
+    return render_template("about.html")
+
+@app.route('/getURL',methods=['GET','POST'])
+def getURL():
+    if request.method == 'POST':
+        url = request.form['url']
+        print(url)
+        data = FeatureExtraction.getAttributess(url)
+        print(data)
+        RFmodel = pickle.load(open('RandomForestModel.sav', 'rb'))
+        predicted_value = RFmodel.predict(data)
+        print(predicted_value)
+        if predicted_value == 0:    
+            value = "Legitimate"
+            return render_template("home.html",error=value, s=score)
+        else:
+            value = "Phishing"
+            return render_template("home.html",error=value, s=score)
+if __name__ == "__main__":
+    app.run(debug=True)

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>{% block title %}{% endblock title %}</title>
+<style>
+.rounded-circle {
+    background: #0A5A00;
+    width: 10rem;
+    height: 10rem;
+    padding: 10px;
+    clear: both;
+    align-content: center;
+    margin: 0 auto; 
+}
+#neg{
+	background: #E10000;
+}
+#site_score{
+    font-family: 'Josefin Sans', sans-serif;
+    color: white;
+    font-weight:700; 
+    position: relative;
+    top: 45px;
+    margin-left: 3px;
+    text-align: center;
+    font-size: 40px;
+}
+#unique{
+background-color:rgba(165, 162, 162, 0.425);
+}
+</style>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+
+</head>
+<body>
+	
+	<div class="container">
+			<img src="static/up.png" alt="Uni_logo" height="200" width="200">
+		{% include 'includes/_navbar.html'%}
+		{% block body %}{% endblock body%}
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	</div>
+</body>
+</html>

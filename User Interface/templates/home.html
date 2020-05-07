@@ -1,0 +1,34 @@
+{% extends 'layout.html'%} {% block title %} Phish Detection
+{% endblock title %} {% block body %}
+
+<div id="unique">
+	<center>
+		<h3>Don't take the bait!</h3>
+		<form method="POST" action="{{url_for('getURL')}}">
+			
+				<table cellpadding=10 cellspacing=25>
+					<tr>
+						<td><input class="form-control" type=text name="url" placeholder="URL to detect"
+							value="{{request.form.url}}" required size=55 /></td>
+						<td><input class="btn btn-dark" type=submit
+							value="Check" /></td>
+					</tr>
+					<tr>
+						<td align="center">{% if error %} {% if error == 'Legitimate'
+							%}
+							<div class="rounded-circle">
+								<h1 id="site_score">{{s}}%</h1>
+							  </div>
+							</p> {% else %}
+							<div class="rounded-circle" id="neg">
+								<h1 id="site_score">{{s}}%</h1>
+							  </div>
+							</p> {% endif %} {% endif %}
+						</td>
+					</tr>
+				</table>
+		</form>
+	</center>
+</div>
+
+{% endblock body %}
