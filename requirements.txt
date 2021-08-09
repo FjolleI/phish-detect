@@ -43,7 +43,7 @@ pyparsing==2.4.7
 python-dateutil==2.8.1
 python-whois==0.7.2
 pytz==2020.1
-pywin32==227
+pywin32==301
 pyzmq==19.0.0
 requests==2.23.0
 scikit-learn==0.22.2.post1
